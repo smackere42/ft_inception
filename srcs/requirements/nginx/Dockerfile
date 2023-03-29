@@ -7,6 +7,6 @@ RUN apt-get update && \
 	-out /etc/ssl/private/nginx.crt \
 	-subj "/C=TH/ST=Bangkok/O=42Bangkok/OU=42Bangkok/CN=tliangso.42.fr"
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY tools/nginx.conf /etc/nginx/nginx.conf
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

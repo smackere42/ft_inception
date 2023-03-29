@@ -45,8 +45,8 @@ echo -e "${BLUE}Updating root user password...${NC}"
 mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 
 echo -e "${BLUE}Stopping MariaDB server...${NC}"
-# kill $mariadb_pid
-# wait $mariadb_pid
+kill $mariadb_pid
+wait $mariadb_pid
 
 echo -e "${GREEN}Database successfully set up!${NC}"
 rm /usr/local/bin/install.sh
