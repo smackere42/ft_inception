@@ -22,4 +22,4 @@ ENV env="../../../.env"
 ENTRYPOINT ["/bin/install.sh"]
 
 # Запускаем MariaDB при запуске контейнера
-# CMD []
+# CMD ["mysqld"]s
