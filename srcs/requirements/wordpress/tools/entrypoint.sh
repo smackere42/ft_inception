@@ -17,4 +17,4 @@ sed -i "s/server_name _;/server_name $DOMAIN_NAME;/" /etc/nginx/conf.d/default.c
 
 # Start PHP-FPM and Nginx
 php-fpm
-# nginx -g "daemon off;"
+nginx -g "daemon off;"
