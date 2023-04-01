@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     php7.3-zip
 
 # Install WordPress
-WORKDIR /var/www/html
+WORKDIR /var/www/html/wordpress
+
 RUN apt-get install -y curl && \
     curl -O https://wordpress.org/latest.tar.gz && \
     tar -xzvf latest.tar.gz && \
@@ -23,7 +24,9 @@ RUN apt-get install -y curl && \
     chmod -R 755 wordpress
 
 # Set up configuration
-COPY ./tools/wp-config.php /var/www/html/wordpress/
+# COPY ./tools/wp-config.php /var/www/html/wordpress/
+
+COPY  ./tools/entrypoint.sh /var/www/html/wordpress
 
 # Expose port for PHP-FPM
 EXPOSE 9000

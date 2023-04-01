@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-chmod +x /usr/local/bin/install.sh
+chmod +x /bin/install.sh
 
 echo -e "${BLUE}Removing existing MySQL data directory (if not empty)...${NC}"
 rm -rf /var/lib/mysql
@@ -44,9 +44,10 @@ mariadb -u root -e "FLUSH PRIVILEGES;"
 echo -e "${BLUE}Updating root user password...${NC}"
 mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 
-echo -e "${BLUE}Stopping MariaDB server...${NC}"
-kill $mariadb_pid
-wait $mariadb_pid
+# echo -e "${BLUE}Stopping MariaDB server...${NC}"
+# kill $mariadb_pid
+# wait $mariadb_pid
 
-echo -e "${GREEN}Database successfully set up!${NC}"
-rm /usr/local/bin/install.sh
+echo -e "${GREEN}Database successfully set up!${NC}${GREEN}${MYSQL_NAME}"
+
+mysqld

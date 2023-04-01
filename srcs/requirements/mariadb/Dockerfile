@@ -1,12 +1,25 @@
+# Используем Debian Buster в качестве базового образа
 FROM debian:buster
 
+# Устанавливаем MariaDB
 RUN apt-get update && \
     apt-get install -y mariadb-server mariadb-client vim && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /var/run/mysqld && \
+    chown -R mysql:mysql /var/run/mysqld && \
+    chmod 777 /var/run/mysqld
 
-COPY ./tools/install.sh /usr/local/bin/
+# Копируем файлы конфигурации
+COPY ./tools/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./tools/install.sh     /bin/install.sh
 
+# Экспортируем порт 3306
 EXPOSE 3306
 
-ENTRYPOINT ["/usr/local/bin/install.sh"]
+
+ENV env="../../../.env"
+
+ENTRYPOINT ["/bin/install.sh"]
+
+# Запускаем MariaDB при запуске контейнера
+# CMD []

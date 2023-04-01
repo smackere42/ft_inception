@@ -1,15 +1,16 @@
-version: '3.9'
+version: '3.3'
 
 services:
   nginx:
+    image: smackere:nginx
     container_name: nginx
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     ports:
       - "443:443"
-    # depends_on:
-    #   - wordpress
+    depends_on:
+      - wordpress
     volumes:
       - wordpress:/var/www/html
     restart: always
@@ -32,9 +33,10 @@ services:
       - network
 
   mariadb:
+    image: smackere:img
     container_name: mariadb
     build:
-      context: ./requirements/wordpress
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
     volumes:
       - mariadb:/var/lib/mysql
@@ -50,7 +52,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/smckere/data/mysql
+      device: /home/smackere/data/mysql
       o: bind
   wordpress:
     driver: local
