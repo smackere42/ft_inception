@@ -1,4 +1,4 @@
-CONTAINER_NAME=mariadb
+CONTAINER_NAME=nginx
 IMAGE_NAME=img_$(CONTAINER_NAME)
 
 start: build run enter

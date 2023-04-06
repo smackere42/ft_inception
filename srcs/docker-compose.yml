@@ -1,36 +1,36 @@
 version: '3.3'
 
 services:
-  # nginx:
-  #   image: smackere:nginx
-  #   container_name: nginx
-  #   build:
-  #     context: ./requirements/nginx
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "443:443"
-  #   depends_on:
-  #     - wordpress
-  #   volumes:
-  #     - wordpress:/var/www/html
-  #   restart: always
-  #   networks:
-  #     - network
+  nginx:
+    image: smackere:nginx
+    container_name: nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/var/www/html
+    restart: always
+    networks:
+      - network
 
-  # wordpress:
-  #   container_name: wordpress
-  #   build:
-  #     context: ./requirements/wordpress
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - mariadb
-  #   volumes:
-  #     - wordpress:/var/www/html
-  #   env_file:
-  #     - .env
-  #   restart: always
-  #   networks:
-  #     - network
+  wordpress:
+    container_name: wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress:/var/www/html
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - network
 
   mariadb:
     image: smackere:img
@@ -38,27 +38,27 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    # volumes:
-    #   - mariadb:/var/lib/mysql
+    volumes:
+      - mariadb:/var/lib/mysql
     env_file:
       - .env
     restart: always
     networks:
       - network
 
-# volumes:
-#   mariadb:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       device: /home/smackere/data/mysql
-#       o: bind
-#   wordpress:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       device: /home/smackere/data/wordpress
-#       o: bind
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/smackere/data/mysql
+      o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/smackere/data/wordpress
+      o: bind
 
 networks:
   network:

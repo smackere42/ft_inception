@@ -19,7 +19,7 @@ EXPOSE 3306
 
 ENV env="../../../.env"
 
-ENTRYPOINT ["/bin/install.sh"]
+ENTRYPOINT ["/bin/install.sh", "mysqld"]
 
 # Запускаем MariaDB при запуске контейнера
-# CMD ["mysqld"]s
+# CMD ["mysqld"]
