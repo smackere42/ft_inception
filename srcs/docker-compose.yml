@@ -34,6 +34,7 @@ services:
 
   mariadb:
     container_name: mariadb
+    image: img_mariadb:inc
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
@@ -50,7 +51,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/smackere/data/mysql
+      device: /home/smackere/data/mysqls
       o: bind
   wordpress:
     driver: local

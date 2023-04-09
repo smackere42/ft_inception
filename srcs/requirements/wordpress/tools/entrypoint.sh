@@ -16,5 +16,5 @@ sed -i "s/define('DB_HOST', 'localhost')/define('DB_HOST', 'db')/" /var/www/html
 sed -i "s/server_name _;/server_name $DOMAIN_NAME;/" /etc/nginx/conf.d/default.conf
 
 # Start PHP-FPM and Nginx
-php-fpm
+php-fpm7
 nginx -g "daemon off;"

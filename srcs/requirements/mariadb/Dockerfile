@@ -13,11 +13,10 @@ RUN apt-get update && \
 COPY ./tools/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./tools/install.sh     /bin/install.sh
 
+
+
 # Экспортируем порт 3306
 EXPOSE 3306
-
-
-ENV env="../../.env"
 
 ENTRYPOINT ["sh", "/bin/install.sh"]
 
