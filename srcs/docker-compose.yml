@@ -33,7 +33,6 @@ services:
       - network
 
   mariadb:
-    image: smackere:img
     container_name: mariadb
     build:
       context: ./requirements/mariadb
