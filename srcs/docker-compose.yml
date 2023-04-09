@@ -56,7 +56,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /var/smackere/data/wordpress
+      device: /home/smackere/data/wordpress
       o: bind
 
 networks:
