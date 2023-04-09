@@ -24,7 +24,7 @@ RUN apt-get install -y curl && \
     chmod -R 755 wordpress
 
 # Set up configuration
-# COPY ./tools/wp-config.php /var/www/html/wordpress/
+COPY ./tools/wp-config.php /var/www/html/wordpress/
 
 COPY  ./tools/entrypoint.sh /var/www/html/wordpress
 
