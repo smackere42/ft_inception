@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# MYSQL_NAME=mariadb
-# MYSQL_ROOT_PASSWORD=root_mdb
-# MYSQL_USER=mysql
-# MYSQL_PASSWORD=Inception1@
+MYSQL_NAME=mariadb
+MYSQL_ROOT_PASSWORD=root_mdb
+MYSQL_USER=mysql
+MYSQL_PASSWORD=Inception1@
 
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
@@ -51,12 +51,12 @@ mysql -u root -e "FLUSH PRIVILEGES;"
 echo -e "${BLUE}Updating root user password...${NC}"
 mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 
-# echo -e "${BLUE}Stopping MariaDB server...${NC}"
-# kill $mariadb_pid
-# wait $mariadb_pid
+echo -e "${BLUE}Stopping MariaDB server...${NC}"
+kill $mariadb_pid
+wait $mariadb_pid
 
 echo -e "${GREEN}Database successfully set up!${NC}${GREEN}"
 
 echo  "${MYSQL_NAME}"
 
-mysqld --user=mysql --console
+exec mysqld --user=mysql --console

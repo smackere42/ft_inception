@@ -1,5 +1,5 @@
-CONTAINER_NAME=nginx
-IMAGE_NAME=img_$(CONTAINER_NAME)
+CONTAINER_NAME=nginx:smackere
+IMAGE_NAME=smackere:$(CONTAINER_NAME)
 
 start: build run enter
 restart: stop clean build run enter
@@ -8,7 +8,7 @@ build:
 	docker build --tag $(IMAGE_NAME) .
 
 run:
-	docker run --name $(CONTAINER_NAME) $(IMAGE_NAME) &
+	docker run -p 443:443 --name $(CONTAINER_NAME) $(IMAGE_NAME) &
 	sleep 0.2
 
 stop:
@@ -25,6 +25,9 @@ psa:
 
 img:
 	docker images
+
+rmi:
+	docker rmi $(IMAGE_NAME)
 
 clean: stop
 	docker rm $(CONTAINER_NAME)

@@ -10,13 +10,10 @@ RUN apt-get update && \
     chmod 777 /var/run/mysqld
 
 # Копируем файлы конфигурации
-COPY ./tools/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d
 COPY ./tools/install.sh     /bin/install.sh
 
 # Экспортируем порт 3306
 EXPOSE 3306
 
 ENTRYPOINT ["bash", "/bin/install.sh"]
-
-# Запускаем MariaDB при запуске контейнера
-# CMD ["mysqld", "--user=mysql", "--console"]
