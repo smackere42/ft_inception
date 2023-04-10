@@ -1,7 +1,7 @@
 CONTAINER_NAME=mariadb
-IMAGE_NAME=img_$(CONTAINER_NAME)
+IMAGE_NAME=img_$(CONTAINER_NAME):mdb
 
-start: build run enter
+start: build run #enter
 restart: stop clean build run enter
 
 build:
@@ -14,8 +14,8 @@ run:
 stop:
 	docker stop $(CONTAINER_NAME)
 
-enter:
-	docker exec -ti $(CONTAINER_NAME) bash
+# enter:
+# 	docker exec -ti $(CONTAINER_NAME) bash
 
 ps:
 	docker ps

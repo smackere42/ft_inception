@@ -6,7 +6,7 @@
 # done
 
 # Set up the WordPress configuration file
-cp /var/www/html/wordpress/wp-config.php /var/www/html/wordpress/wp-config.php
+# cp /var/www/html/wordpress/wp-config.php /var/www/html/wordpress/wp-config.php
 sed -i "s/define('DB_NAME', 'database_name_here')/define('DB_NAME', '$WORDPRESS_DB_NAME')/" /var/www/html/wordpress/wp-config.php
 sed -i "s/define('DB_USER', 'username_here')/define('DB_USER', '$WORDPRESS_DB_USER')/" /var/www/html/wordpress/wp-config.php
 sed -i "s/define('DB_PASSWORD', 'password_here')/define('DB_PASSWORD', '$WORDPRESS_DB_PASSWORD')/" /var/www/html/wordpress/wp-config.php

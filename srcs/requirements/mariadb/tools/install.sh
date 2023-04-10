@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# MYSQL_NAME=mariadb
+# MYSQL_ROOT_PASSWORD=root_mdb
+# MYSQL_USER=mysql
+# MYSQL_PASSWORD=Inception1@
+
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -32,19 +37,19 @@ echo -e "${BLUE}Removing test database and anonymous user...${NC}"
 mysql -u root -e "DELETE FROM mysql.user WHERE User='';DROP DATABASE test;"
 
 echo -e "${BLUE}Creating new database...${NC}"
-mysql -u root -e "CREATE DATABASE $MYSQL_NAME;"
+mysql -u root -e "CREATE DATABASE ${MYSQL_NAME};"
 
 echo -e "${BLUE}Creating new user for database...${NC}"
-mysql -u root -e "CREATE USER $MYSQL_USER@'%' IDENTIFIED BY $MYSQL_PASSWORD;"
+mysql -u root -e "CREATE USER ${MYSQL_USER}@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
 
 echo -e "${BLUE}Granting privileges to new user...${NC}"
-mysql -u root -e "GRANT ALL PRIVILEGES ON $MYSQL_NAME.* TO $MYSQL_USER@'%';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON ${MYSQL_NAME}.* TO ${MYSQL_USER}@'%';"
 
 echo -e "${BLUE}Flushing privileges...${NC}"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
 echo -e "${BLUE}Updating root user password...${NC}"
-mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
+mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 
 # echo -e "${BLUE}Stopping MariaDB server...${NC}"
 # kill $mariadb_pid
@@ -52,5 +57,6 @@ mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSW
 
 echo -e "${GREEN}Database successfully set up!${NC}${GREEN}"
 
-echo  "$MYSQL_NAME 12312312 $MYSQL_NAME"
+echo  "${MYSQL_NAME}"
+
 mysqld --user=mysql --console
