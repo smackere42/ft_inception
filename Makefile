@@ -2,12 +2,12 @@
 start:
 	cd srcs && docker-compose up
 
-restart: clean build run
+re: clean build run
 
 dirs:
-	mkdir -p ~/data
-	mkdir -p ~/data/db
-	mkdir -p ~/data/wp
+	mkdir -p /tmp/data
+	mkdir -p /tmp/data/db
+	mkdir -p /tmp/data/wp
 build:
 	cd srcs && docker-compose build
 run:

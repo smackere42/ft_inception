@@ -1,4 +1,4 @@
-version: '3.3'
+version: "3.3"
 
 services:
 
@@ -43,19 +43,17 @@ services:
 
 volumes:
   db:
-    name: db
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/${USER}/data/db
+      device: /tmp/data/db
   wp:
-    name: wp
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/${USER}/data/wp
+      device: /tmp/data/wp
 
 networks:
   intra:
