@@ -1,3 +1,62 @@
-version: 3.3
+version: '3.3'
 
-	services:
+services:
+
+  mariadb:
+    container_name: mariadb
+    image: smackere:mariadb
+    build: ./requirements/mariadb
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - db:/var/www/html/wordpress
+    networks:
+      - intra
+
+  wordpress:
+    container_name: wordpress
+    image: smackere:wordpress
+    build: ./requirements/wordpress
+    env_file:
+    - .env
+    volumes:
+    - wp:/var/www/html/wordpress
+    networks:
+      - intra
+    depends_on:
+      - mariadb
+
+  nginx:
+    container_name: nginx
+    image: smackere:nginx
+    build: ./requirements/nginx
+    hostname: localhost
+    volumes:
+    - wp:/var/www/html/wordpress
+    networks:
+      - intra
+    depends_on:
+      - wordpress
+    ports:
+      - 443:443
+
+volumes:
+  db:
+    name: db
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/db
+  wp:
+    name: wp
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/wp
+
+networks:
+  intra:
+    driver: bridge

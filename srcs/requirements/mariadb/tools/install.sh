@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MYSQL_NAME=mariadb
-MYSQL_ROOT_PASSWORD=root_mdb
-MYSQL_USER=mysql
-MYSQL_PASSWORD=Inception1@
+# MYSQL_NAME=mariadb
+# MYSQL_ROOT_PASSWORD=root_mdb
+# MYSQL_USER=mysql
+# MYSQL_PASSWORD=Inception1@
 
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'

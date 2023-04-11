@@ -4,8 +4,10 @@ start:
 
 restart: clean build run
 
-mkdir:
-	mkdir ~/data ~/data/mariadb ~/data/wordpress
+dirs:
+	mkdir -p ~/data
+	mkdir -p ~/data/db
+	mkdir -p ~/data/wp
 build:
 	cd srcs && docker-compose build
 run:
