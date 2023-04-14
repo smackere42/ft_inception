@@ -43,7 +43,7 @@ echo "Wordpress: creating users..."
 # Пароль для пользователя admin. По умолчанию используется случайно сгенерированная строка.
 # --admin_email=<электронная почта>
 # Адрес электронной почты администратора.
-wp core install --allow-root --url=${DOMAIN_NAME} --title=${WORDPRESS_NAME} --admin_user=${WORDPRESS_ROOT_LOGIN} --admin_password=${MYSQL_ROOT_PASSWORD} --admin_email=${WORDPRESS_ROOT_EMAIL};
+# wp core install --allow-root --url=${WORDPRESS_DB_HOST} --title=${WORDPRESS_NAME} --admin_user=${WORDPRESS_ROOT_LOGIN} --admin_password=${MYSQL_ROOT_PASSWORD} --admin_email=${WORDPRESS_ROOT_EMAIL};
 # Создает нового пользователя
 # <user-login>
 # Логин пользователя для создания.
@@ -54,7 +54,7 @@ wp core install --allow-root --url=${DOMAIN_NAME} --title=${WORDPRESS_NAME} --ad
 # Возможные значения включают «администратор», «редактор», «автор», «участник», «подписчик».
 # [--user_pass=<password>]
 # Пароль пользователя. По умолчанию: генерируется случайным образом
-wp user create ${MYSQL_USER} ${WORDPRESS_USER_EMAIL} --user_pass=${MYSQL_PASSWORD} --role=author --allow-root;
+wp user create ${WORDPRESS_DB_USER} --user_pass=${WORDPRESS_DB_PASSWORD} --role=author --allow-root;
 # Тема для WordPress
 wp theme install inspiro --activate --allow-root
 
@@ -74,7 +74,10 @@ else
 echo "Wordpress: is already set up!"
 fi
 
+<<<<<<< HEAD
 # wp redis enable --allow-root
 
+=======
+>>>>>>> 11dd34785bd0296fc09769fc4df165d4be2dde22
 echo "Wordpress started on :9000"
 /usr/sbin/php-fpm7.3 -F
