@@ -37,13 +37,13 @@ echo -e "${BLUE}Removing test database and anonymous user...${NC}"
 mysql -u root -e "DELETE FROM mysql.user WHERE User='';DROP DATABASE test;"
 
 echo -e "${BLUE}Creating new database...${NC}"
-mysql -u root -e "CREATE DATABASE ${MYSQL_NAME};"
+mysql -u root -e "CREATE DATABASE ${WORDPRESS_DB_NAME};"
 
 echo -e "${BLUE}Creating new user for database...${NC}"
 mysql -u root -e "CREATE USER ${MYSQL_USER}@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
 
 echo -e "${BLUE}Granting privileges to new user...${NC}"
-mysql -u root -e "GRANT ALL PRIVILEGES ON ${MYSQL_NAME}.* TO ${MYSQL_USER}@'%';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON ${WORDPRESS_DB_NAME}.* TO ${MYSQL_USER}@'%';"
 
 echo -e "${BLUE}Flushing privileges...${NC}"
 mysql -u root -e "FLUSH PRIVILEGES;"
@@ -57,6 +57,6 @@ wait $mariadb_pid
 
 echo -e "${GREEN}Database successfully set up!${NC}${GREEN}"
 
-echo  "${MYSQL_NAME}"
+echo  "\n\t${RED}${MYSQL_NAME}${RED}\n"
 
 exec mysqld --user=mysql --console

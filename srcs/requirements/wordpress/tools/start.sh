@@ -56,7 +56,7 @@ wp core install --allow-root --url=${DOMAIN_NAME} --title=${WORDPRESS_NAME} --ad
 # Пароль пользователя. По умолчанию: генерируется случайным образом
 wp user create ${MYSQL_USER} ${WORDPRESS_USER_EMAIL} --user_pass=${MYSQL_PASSWORD} --role=author --allow-root;
 # Тема для WordPress
-wp theme install inspiro --activate --allow-root
+wp theme install nanospace --activate --allow-root
 
 # enable redis cache
     # sed -i "40i define( 'WP_REDIS_HOST', '$REDIS_HOST' );"      wp-config.php

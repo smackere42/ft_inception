@@ -1,14 +1,18 @@
 FROM debian:buster
 
-RUN apt-get update
-RUN apt-get install -y php7.3 php-mysqli php-fpm php-cli curl sendmail
-
-EXPOSE 9000
+RUN apt-get update && \
+	apt-get install -y php7.3 \
+	php-mysqli \
+	php-fpm \
+	php-cli \
+	curl
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
-COPY ./tools /var/www/
+COPY ./tools/start.sh ./conf/wp-config.php /var/www/
+
+EXPOSE 9000
 
 # static website
 # COPY conf/index.html /var/www/index.html
 
-CMD bash /var/www/start.sh
+ENTRYPOINT "bash", "/var/www/start.sh"
