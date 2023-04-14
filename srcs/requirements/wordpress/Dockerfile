@@ -15,4 +15,4 @@ EXPOSE 9000
 # static website
 # COPY conf/index.html /var/www/index.html
 
-ENTRYPOINT "bash", "/var/www/start.sh"
+ENTRYPOINT ["bash", "/var/www/start.sh"]

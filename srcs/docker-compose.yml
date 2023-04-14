@@ -19,10 +19,10 @@ services:
     image: smackere:wordpress
     build: ./requirements/wordpress
     environment:
-      -WORDPRESS_DB_HOST: "${MYSQL_NAME}"
-      -WORDPRESS_DB_NAME: "${WORDPRESS_DB_NAME}"
-      -WORDPRESS_DB_USER: "${MYSQL_USER}"
-      -WORDPRESS_DB_PASSWORD: "${MYSQL_PASSWORD}"
+      -WORDPRESS_DB_HOST: ${MYSQL_NAME} #mariadb
+      -WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME} #wordpress
+      -WORDPRESS_DB_USER: ${MYSQL_USER} #smackere
+      -WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD} #Inception1@
     volumes:
     - wp:/var/www/html/wordpress
     networks:
