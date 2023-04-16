@@ -29,7 +29,7 @@ define( 'DB_USER', 'smackere' );
 define( 'DB_PASSWORD', 'Inception1@' );
 
 /** Database hostname */
-define( 'DB_HOST', 'smackere' );
+define( 'DB_HOST', 'ca676d516bf1' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
