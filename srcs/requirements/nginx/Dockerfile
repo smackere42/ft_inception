@@ -7,7 +7,7 @@ RUN apt-get update && \
 	-out /etc/ssl/private/smackere.crt \
 	-subj "/C=TH/ST=Bangkok/O=42Bangkok/OU=42Bangkok/CN=smackere.42.fr"
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/sites-enabled/default
 
 # EXPOSE 443
 
